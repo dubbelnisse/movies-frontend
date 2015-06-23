@@ -17,6 +17,8 @@ var Movie = React.createClass({
 
   render:function() {
     var watched = moment(this.props.last_watched).format('YYYY-MM-DD');
+    var showRating = this.props.rating ? true : false;
+
     var hover = 'movies__movie-overlay';
 
     if (this.state.hover) {
@@ -28,8 +30,8 @@ var Movie = React.createClass({
         <img src={'http://image.tmdb.org/t/p/w500' + this.props.poster_path} />
         <div className={hover}>
           <div className="movies__movie-title">{this.props.title}</div>
-          <div className="movies__movie-watched">{watched}</div>
-          <div className="movies__movie-rating">{this.props.rating}</div>
+          <div className="movies__movie-watched"><i className="fa fa-clock-o"></i>{watched}</div>
+          { showRating ? <div className="movies__movie-rating"><i className="fa fa-heart-o"></i>{this.props.rating}/10</div> : null }
         </div>
       </div>
     );

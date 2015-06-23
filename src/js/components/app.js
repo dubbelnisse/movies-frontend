@@ -32,7 +32,7 @@ var App = React.createClass({
     return (
       <div>
         <Movies data={this.state.data}/>
-        <button onClick={this.loadMore}>Get more</button>
+        <div className="btn btn-primary movies__load-more" onClick={this.loadMore}><i className="fa fa-angle-double-down"></i>GET MORE</div>
       </div>
     );
   }

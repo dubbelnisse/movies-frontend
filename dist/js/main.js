@@ -24271,7 +24271,7 @@ var App = React.createClass({displayName: "App",
     return (
       React.createElement("div", null, 
         React.createElement(Movies, {data: this.state.data}), 
-        React.createElement("button", {onClick: this.loadMore}, "Get more")
+        React.createElement("div", {className: "btn btn-primary movies__load-more", onClick: this.loadMore}, React.createElement("i", {className: "fa fa-angle-double-down"}), "GET MORE")
       )
     );
   }
@@ -24299,6 +24299,8 @@ var Movie = React.createClass({displayName: "Movie",
 
   render:function() {
     var watched = moment(this.props.last_watched).format('YYYY-MM-DD');
+    var showRating = this.props.rating ? true : false;
+
     var hover = 'movies__movie-overlay';
 
     if (this.state.hover) {
@@ -24310,8 +24312,8 @@ var Movie = React.createClass({displayName: "Movie",
         React.createElement("img", {src: 'http://image.tmdb.org/t/p/w500' + this.props.poster_path}), 
         React.createElement("div", {className: hover}, 
           React.createElement("div", {className: "movies__movie-title"}, this.props.title), 
-          React.createElement("div", {className: "movies__movie-watched"}, watched), 
-          React.createElement("div", {className: "movies__movie-rating"}, this.props.rating)
+          React.createElement("div", {className: "movies__movie-watched"}, React.createElement("i", {className: "fa fa-clock-o"}), watched), 
+           showRating ? React.createElement("div", {className: "movies__movie-rating"}, React.createElement("i", {className: "fa fa-heart-o"}), this.props.rating, "/10") : null
         )
       )
     );

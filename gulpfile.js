@@ -24,6 +24,8 @@ gulp.task('uglify', ['browserify'], function () {
 });
 
 gulp.task('copy',function() {
+    gulp.src('bower_components/fontawesome/fonts/*')
+      .pipe(gulp.dest('dist/fonts'));
     gulp.src('src/index.html')
       .pipe(gulp.dest('dist'));
     gulp.src('src/assets/**/*.*')

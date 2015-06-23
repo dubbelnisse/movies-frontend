@@ -1,0 +1,16 @@
+.btn {
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.btn-primary {
+  background: $color--java;
+  color: $color--white;
+  transition: background 300ms ease-out;
+
+  &:hover {
+    background: $color--eastern-blue;
+  }
+}
