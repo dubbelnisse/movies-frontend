@@ -24244,7 +24244,7 @@ var request = require('superagent');
 var App = React.createClass({displayName: "App",
 
   loadMovies: function(take) {
-    var takeLength = typeof take !== 'undefined' ? take : 10;
+    var takeLength = typeof take !== 'undefined' ? take : 12;
     request
       .get('http://localhost:3000/latest')
       .query({ take: takeLength })
@@ -24263,7 +24263,7 @@ var App = React.createClass({displayName: "App",
   },
 
   loadMore: function() {
-    var currentLength = Object.keys(this.state.data).length + 10;
+    var currentLength = Object.keys(this.state.data).length + 12;
     this.loadMovies(currentLength);
   },
 
@@ -24285,16 +24285,34 @@ var moment = require('moment');
 
 var Movie = React.createClass({displayName: "Movie",
 
+  getInitialState: function () {
+      return {hover: false};
+  },
   
+  mouseOver: function () {
+      this.setState({hover: true});
+  },
+  
+  mouseOut: function () {
+      this.setState({hover: false});
+  },
 
   render:function() {
-    console.log(this.props.backdrop_path);
     var watched = moment(this.props.last_watched).format('YYYY-MM-DD');
+    var hover = 'movies__movie-overlay';
+
+    if (this.state.hover) {
+      hover = 'movies__movie-overlay movies__movie-show';
+    }
+
     return (
-      React.createElement("div", {className: "movies__movie"}, 
-        React.createElement("img", {src: 'http://image.tmdb.org/t/p/w300' + this.props.poster_path}), 
-        React.createElement("p", null, watched), 
-        React.createElement("p", null, this.props.rating)
+      React.createElement("div", {className: "movies__movie", onMouseOver: this.mouseOver, onMouseOut: this.mouseOut}, 
+        React.createElement("img", {src: 'http://image.tmdb.org/t/p/w500' + this.props.poster_path}), 
+        React.createElement("div", {className: hover}, 
+          React.createElement("div", {className: "movies__movie-title"}, this.props.title), 
+          React.createElement("div", {className: "movies__movie-watched"}, watched), 
+          React.createElement("div", {className: "movies__movie-rating"}, this.props.rating)
+        )
       )
     );
   }

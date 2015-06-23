@@ -5,7 +5,7 @@ var request = require('superagent');
 var App = React.createClass({
 
   loadMovies: function(take) {
-    var takeLength = typeof take !== 'undefined' ? take : 10;
+    var takeLength = typeof take !== 'undefined' ? take : 12;
     request
       .get('http://localhost:3000/latest')
       .query({ take: takeLength })
@@ -24,7 +24,7 @@ var App = React.createClass({
   },
 
   loadMore: function() {
-    var currentLength = Object.keys(this.state.data).length + 10;
+    var currentLength = Object.keys(this.state.data).length + 12;
     this.loadMovies(currentLength);
   },
 

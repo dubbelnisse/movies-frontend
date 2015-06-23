@@ -3,16 +3,34 @@ var moment = require('moment');
 
 var Movie = React.createClass({
 
+  getInitialState: function () {
+      return {hover: false};
+  },
   
+  mouseOver: function () {
+      this.setState({hover: true});
+  },
+  
+  mouseOut: function () {
+      this.setState({hover: false});
+  },
 
   render:function() {
-    console.log(this.props.backdrop_path);
     var watched = moment(this.props.last_watched).format('YYYY-MM-DD');
+    var hover = 'movies__movie-overlay';
+
+    if (this.state.hover) {
+      hover = 'movies__movie-overlay movies__movie-show';
+    }
+
     return (
-      <div className="movies__movie">
-        <img src={'http://image.tmdb.org/t/p/w300' + this.props.poster_path} />
-        <p>{watched}</p>
-        <p>{this.props.rating}</p>
+      <div className="movies__movie" onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}>
+        <img src={'http://image.tmdb.org/t/p/w500' + this.props.poster_path} />
+        <div className={hover}>
+          <div className="movies__movie-title">{this.props.title}</div>
+          <div className="movies__movie-watched">{watched}</div>
+          <div className="movies__movie-rating">{this.props.rating}</div>
+        </div>
       </div>
     );
   }
