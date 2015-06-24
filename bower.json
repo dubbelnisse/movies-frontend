@@ -11,7 +11,8 @@
     "bower_components",
     "assets/bower_components",
     "test",
-    "tests"
+    "tests",
+    "dist"
   ],
   "dependencies": {
     "fontawesome": "~4.3.0",
