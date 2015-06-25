@@ -1,12 +1,12 @@
 var AddMovieForm = require('./addmovieform');
+var classNames = require('classnames');
 var React = require('react');
 
 var AddMovie = React.createClass({
 
   render:function() {
-    console.log(this.props.formOpen);
     return (
-      <div className="add-movie">
+      <div className={classNames('add-movie', { open: this.props.formOpen })}>
         <AddMovieForm />
       </div>
     );

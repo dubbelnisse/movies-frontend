@@ -5,7 +5,12 @@
   width: 250px;
   height: 100%;
   z-index: $layer-two;
+  transition: 300ms ease-in-out;
   transform: translateX(100%);
+
+  &.open {
+    transform: translateX(0);
+  }
 }
 
 .add-movie__toggle {
@@ -15,6 +20,8 @@
   border-radius: 100%;
   cursor: pointer;
   font-size: 40px;
+  transition-delay: 200ms;
+  transition: 300ms ease-in-out;
   height: 50px;
   width: 50px;
   z-index: $layer-three;
@@ -24,8 +31,12 @@
 
     color: $color--white;
   }
+
+  &.open {
+    transform: translateX(-205px) rotate(45deg);
+  }
 }
 
 .add-movie__form {
-  padding: 50px 20px 20px 20px;
+  padding: 90px 20px 20px 20px;
 }

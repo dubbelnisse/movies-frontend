@@ -1,3 +1,4 @@
+var classNames = require('classnames');
 var React = require('react');
 
 var AddMovieToggle = React.createClass({
@@ -7,7 +8,7 @@ var AddMovieToggle = React.createClass({
 
   render:function() {
     return (
-      <div className="add-movie__toggle" onClick={this._toggle}>
+      <div onClick={this._toggle} className={classNames('add-movie__toggle', { open: this.props.formOpen })}>
         <i className="fa fa-plus"></i>
       </div>
     );
