@@ -20,7 +20,7 @@ var App = React.createClass({
   getInitialState: function(){
     return {
       data: [],
-      toggle: false
+      formOpen: false
     };
   },
 
@@ -32,12 +32,18 @@ var App = React.createClass({
     var take = Object.keys(this.state.data).length + 12;
     this.loadMovies(take);
   },
-  
+
+  _toggle: function () {
+    this.setState({
+      formOpen: this.props.formOpen ? false : true
+    });
+  },
+
   render:function() {
     return (
       <div>
-        <AddMovieToggle />
-        <AddMovie />
+        <AddMovieToggle toggle={this._toggle}/>
+        <AddMovie formOpen={this.state.formOpen}/>
         <Movies data={this.state.data}/>
         <div className="btn btn-primary movies__load-more" onClick={this.loadMore}><i className="fa fa-angle-double-down"></i>GET MORE</div>
       </div>
