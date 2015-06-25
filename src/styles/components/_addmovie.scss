@@ -1,5 +1,5 @@
 .add-movie {
-  @include position(top, right);
+  @include position(top, right, 0, 0, fixed);
   
   background: #4C60EE;
   width: 250px;
@@ -14,7 +14,7 @@
 }
 
 .add-movie__toggle {
-  @include position(top, right, '20px', '20px');
+  @include position(top, right, '20px', '20px', fixed);
 
   background: $color--java;
   border-radius: 100%;

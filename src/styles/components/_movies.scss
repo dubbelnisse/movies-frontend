@@ -20,7 +20,7 @@
   font-size: 18px;
   left: 0;
   opacity: 0;
-  padding: 10px;
+  padding: 20px;
   position: absolute;
   top: 0;
   text-transform: uppercase;
@@ -39,16 +39,16 @@
 }
 
 .movies__movie-watched {
-  @include position(bottom, left, 10px, 10px);
+  @include position(bottom, left, 20px, 20px);
 }
 
 .movies__movie-rating {
-  @include position(bottom, left, 35px, 10px);
+  @include position(bottom, left, 45px, 20px);
 }
 
 .movies__movie-show {
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
   opacity: 1;
   transition: opacity 300ms ease-out;
 }
