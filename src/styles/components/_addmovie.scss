@@ -1,0 +1,31 @@
+.add-movie {
+  @include position(top, right);
+  
+  background: #4C60EE;
+  width: 250px;
+  height: 100%;
+  z-index: $layer-two;
+  transform: translateX(100%);
+}
+
+.add-movie__toggle {
+  @include position(top, right, '20px', '20px');
+
+  background: $color--java;
+  border-radius: 100%;
+  cursor: pointer;
+  font-size: 40px;
+  height: 50px;
+  width: 50px;
+  z-index: $layer-three;
+
+  i {
+    @include center(both);
+
+    color: $color--white;
+  }
+}
+
+.add-movie__form {
+  padding: 50px 20px 20px 20px;
+}

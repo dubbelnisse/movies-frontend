@@ -1,0 +1,14 @@
+input {
+  @include placeholder-color($color--white);
+
+  background: #2A3484;
+  border: none;
+  display: block;
+  padding: 10px;
+  width: calc(100% - 20px);
+  margin-bottom: 15px;
+
+  &:focus {
+    background: #F1F1F1;
+  }
+}

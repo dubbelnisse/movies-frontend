@@ -1,11 +1,13 @@
 var Movies = require('./movies');
+var AddMovie = require('./addmovie');
+var AddMovieToggle = require('./addmovietoggle');
 var React = require('react');
 var request = require('superagent');
 
 var App = React.createClass({
 
   loadMovies: function(take) {
-    var takeLength = typeof take !== 'undefined' ? take : 12;
+    var takeLength = take ? take : 12;
     request
       .get('http://localhost:3000/latest')
       .query({ take: takeLength })
@@ -16,7 +18,10 @@ var App = React.createClass({
   },
 
   getInitialState: function(){
-    return {data: []};
+    return {
+      data: [],
+      toggle: false
+    };
   },
 
   componentDidMount: function() {
@@ -24,13 +29,15 @@ var App = React.createClass({
   },
 
   loadMore: function() {
-    var currentLength = Object.keys(this.state.data).length + 12;
-    this.loadMovies(currentLength);
+    var take = Object.keys(this.state.data).length + 12;
+    this.loadMovies(take);
   },
-
+  
   render:function() {
     return (
       <div>
+        <AddMovieToggle />
+        <AddMovie />
         <Movies data={this.state.data}/>
         <div className="btn btn-primary movies__load-more" onClick={this.loadMore}><i className="fa fa-angle-double-down"></i>GET MORE</div>
       </div>

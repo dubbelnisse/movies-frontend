@@ -18,7 +18,6 @@ var Movie = React.createClass({
   render:function() {
     var watched = moment(this.props.last_watched).format('YYYY-MM-DD');
     var showRating = this.props.rating ? true : false;
-
     var hover = 'movies__movie-overlay';
 
     if (this.state.hover) {
