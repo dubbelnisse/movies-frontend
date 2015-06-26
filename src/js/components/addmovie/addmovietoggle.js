@@ -1,5 +1,5 @@
-var classNames = require('classnames');
 var React = require('react');
+var classNames = require('classnames');
 
 var AddMovieToggle = React.createClass({
   _toggle: function () {

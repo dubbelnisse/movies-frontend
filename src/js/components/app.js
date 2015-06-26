@@ -1,8 +1,8 @@
-var Movies = require('./movies');
-var AddMovie = require('./addmovie');
-var AddMovieToggle = require('./addmovietoggle');
-var React = require('react');
+var Movies = require('./latestmovies/movies');
+var AddMovie = require('./addmovie/addmovie');
+var AddMovieToggle = require('./addmovie/addmovietoggle');
 var request = require('superagent');
+var React = require('react');
 
 var App = React.createClass({
 
