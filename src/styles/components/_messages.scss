@@ -1,0 +1,22 @@
+.message {
+  display: none;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: $color--white;
+  text-transform: uppercase;
+  font-size: 10px;
+  z-index: -1;
+}
+
+.message__active {
+  display: block;
+}
+
+.message__error {
+  background: #DA4968;
+}
+
+.message__success {
+  background: #52DA6A;
+}

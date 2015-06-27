@@ -2,11 +2,12 @@
   @include position(top, right, 0, 0, fixed);
   
   background: #4C60EE;
-  width: 250px;
+  width: 210px;
   height: 100%;
   z-index: $layer-two;
   transition: 300ms ease-in-out;
   transform: translateX(100%);
+  padding: 90px 20px 20px 20px;
 
   &.open {
     transform: translateX(0);
@@ -35,8 +36,4 @@
   &.open {
     transform: translateX(-205px) rotate(45deg);
   }
-}
-
-.add-movie__form {
-  padding: 90px 20px 20px 20px;
 }
