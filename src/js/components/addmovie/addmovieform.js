@@ -69,7 +69,7 @@ var AddMovieForm = React.createClass({
       .query({ rating: this.state.rating })
       .query({ date: this.state.date })
       .end(function(err, data){
-        if (data.status === 400) {
+        if (data.status === 400 || data.status === 404) {
           this.setState({
             message: {
               active: true,
