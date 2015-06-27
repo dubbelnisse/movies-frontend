@@ -10,9 +10,9 @@ var AddMovieForm = React.createClass({
       rating: '',
       date: '',
       message: {
-        active: true,
-        type: 'success',
-        message: 'Testing'
+        active: false,
+        type: '',
+        message: ''
       }
     }
   },
