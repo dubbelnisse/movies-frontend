@@ -1,7 +1,8 @@
 input {
   @include placeholder-color($color--white);
 
-  background: #2A3484;
+  background: $color--bay-of-many;
+  color: $color--white;
   border: none;
   display: block;
   padding: 10px;
@@ -9,6 +10,9 @@ input {
   margin-bottom: 15px;
 
   &:focus {
-    background: #F1F1F1;
+    @include placeholder-color($color--black);
+
+    background: $color--seashell;
+    color: $color--black;
   }
 }

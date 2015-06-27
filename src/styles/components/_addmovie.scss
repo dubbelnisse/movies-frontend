@@ -1,7 +1,7 @@
 .add-movie {
   @include position(top, right, 0, 0, fixed);
   
-  background: #4C60EE;
+  background: $color--royal-blue;
   width: 210px;
   height: 100%;
   z-index: $layer-two;
