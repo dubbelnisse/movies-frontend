@@ -4,12 +4,15 @@ var AddMovieToggle = require('./addmovie/addmovietoggle');
 var request = require('superagent');
 var React = require('react');
 
+var dev = 'http://localhost:3000/latest';
+var prod = 'http://46.101.48.224:3000/latest';
+
 var App = React.createClass({
 
   loadMovies: function(take) {
     var takeLength = take ? take : 12;
     request
-      .get('http://46.101.48.224:3000/latest')
+      .get(dev)
       .query({ take: takeLength })
       .end(function(err, data){
         this.setState({data: data.body});

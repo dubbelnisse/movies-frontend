@@ -2,6 +2,9 @@ var React = require('react');
 var Message = require('../messages/message');
 var request = require('superagent');
 
+var dev = 'http://localhost:3000/add';
+var prod = 'http://46.101.48.224:3000/add';
+
 var AddMovieForm = React.createClass({
   
   getInitialState: function () {
@@ -64,7 +67,7 @@ var AddMovieForm = React.createClass({
     }
 
     request
-      .post('http://46.101.48.224:3000/add')
+      .post(dev)
       .query({ id: this.state.id })
       .query({ rating: this.state.rating })
       .query({ date: this.state.date })
