@@ -9,7 +9,7 @@ var App = React.createClass({
   loadMovies: function(take) {
     var takeLength = take ? take : 12;
     request
-      .get('http://localhost:3000/latest')
+      .get('http://46.101.48.224:3000/latest')
       .query({ take: takeLength })
       .end(function(err, data){
         this.setState({data: data.body});

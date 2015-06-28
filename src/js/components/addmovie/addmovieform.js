@@ -64,7 +64,7 @@ var AddMovieForm = React.createClass({
     }
 
     request
-      .post('http://localhost:3000/add')
+      .post('http://46.101.48.224:3000/add')
       .query({ id: this.state.id })
       .query({ rating: this.state.rating })
       .query({ date: this.state.date })
