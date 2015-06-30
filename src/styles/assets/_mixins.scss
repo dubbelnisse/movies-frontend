@@ -12,3 +12,19 @@
      color: $color;  
   }
 }
+
+@mixin bp($point) {
+  $bp-phone: "(max-width: 640px)";
+  $bp-tablet: "(max-width: 768px)";
+  $bp-desktop: "(max-width: 1824px)";
+
+  @if $point == dekstop {
+    @media #{$bp-desktop} { @content; }
+  }
+  @else if $point == tablet {
+    @media #{$bp-tablet} { @content; }
+  }
+  @else if $point == phone {
+    @media #{$bp-phone}  { @content; }
+  }
+}
