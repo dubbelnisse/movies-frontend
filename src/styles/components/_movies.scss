@@ -5,12 +5,12 @@
 }
 
 .movies__movie {
-  @include bp(phone) {
-    width: 100%;
-  }
-
   @include bp(tablet) {
     width: 50%;
+  }
+
+  @include bp(phone) {
+    width: 100%;
   }
 
   display: inline-block;
