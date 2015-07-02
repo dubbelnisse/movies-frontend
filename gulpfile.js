@@ -6,6 +6,7 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var csso = require('gulp-csso');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('browserify', function(){
   var b = browserify();
@@ -36,6 +37,10 @@ gulp.task('sass', function () {
   gulp.src('src/styles/style.scss')
     .pipe(sass({
       errLogToConsole: true
+    }))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
     }))
     .pipe(csso())
     .pipe(gulp.dest('dist/styles'));

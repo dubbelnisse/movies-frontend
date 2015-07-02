@@ -12,7 +12,7 @@ var App = React.createClass({
   loadMovies: function(take) {
     var takeLength = take ? take : 12;
     request
-      .get(dev)
+      .get(prod)
       .query({ take: takeLength })
       .end(function(err, data){
         this.setState({data: data.body});

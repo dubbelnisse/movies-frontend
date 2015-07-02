@@ -72,7 +72,7 @@ var AddMovieForm = React.createClass({
     }
 
     request
-      .post(addDev)
+      .post(addProd)
       .query({ id: this.state.id })
       .query({ rating: this.state.rating })
       .query({ date: this.state.date })
@@ -113,7 +113,7 @@ var AddMovieForm = React.createClass({
 
   login:function () {
     request
-      .post(loginDev)
+      .post(loginProd)
       .query({ email: this.state.email })
       .query({ password: this.state.password })
       .end(function(err, data){
