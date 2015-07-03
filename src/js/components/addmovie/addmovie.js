@@ -11,7 +11,7 @@ var AddMovie = React.createClass({
   getInitialState: function () {
     return {
       loggedIn: false,
-      email: '',
+      hash: '',
       username: ''
     }
   },
@@ -21,18 +21,18 @@ var AddMovie = React.createClass({
   },
 
   getUser:function () {
+    console.log(this.state.hash);
     request
       .post(userDev)
-      .query({ email: this.state.email })
+      .query({ hash: this.state.hash })
       .end(function(err, data){
         var res = data.body;
         if (res.code === 200) {
-          console.log(res);
           this.setState({
             username: res.username
           });
         } else {
-          console.log(data.body);
+          console.log(res);
         }
       }
       .bind(this));
@@ -41,9 +41,10 @@ var AddMovie = React.createClass({
   checkCookie: function () {
     var cookie = document.cookie;
     var cookieName = cookie.split('=')[0];
-    var email = cookie.split('=')[1];
+    var hash = cookie.split('=')[1];
     if (cookieName === 'user') {
-      this.state.email = email;
+      console.log(hash);
+      this.state.hash = hash;
       this.state.loggedIn = true;
       this.getUser();
     }

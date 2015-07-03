@@ -29,10 +29,10 @@ var Login = React.createClass({
       .end(function(err, data){
         var res = data.body;
         if (res.code === 200) {
-          document.cookie = 'user=' + res.email;
+          document.cookie = 'user=' + res.hash;
           this._rerender();
         } else {
-          console.log(data.body);
+          console.log(res);
         }
       }
       .bind(this));
@@ -45,8 +45,8 @@ var Login = React.createClass({
   render:function () {
     return (
       <div>
-        <input type="text" placeholder="email" value={this.state.email} onChange={this.handleChange('email')}/>
-        <input type="text" placeholder="password" value={this.state.password} onChange={this.handleChange('password')}/>
+        <input type="email" placeholder="email" value={this.state.email} onChange={this.handleChange('email')}/>
+        <input type="password" placeholder="password" value={this.state.password} onChange={this.handleChange('password')}/>
         <div className="btn btn-primary" onClick={this.login}>LOGIN</div>
       </div>
     );
