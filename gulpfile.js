@@ -1,51 +1,28 @@
 var gulp = require('gulp');
-var browserify = require('browserify');
-var reactify = require('reactify');
-var source = require('vinyl-source-stream');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var sass = require('gulp-sass');
-var csso = require('gulp-csso');
-var autoprefixer = require('gulp-autoprefixer');
+var mocha = require('gulp-mocha');
+var env = require('gulp-env');
 
-gulp.task('browserify', function(){
-  var b = browserify();
-  b.transform(reactify); // use the reactify transform
-  b.add('./src/js/main.js');
-  return b.bundle()
-    .pipe(source('main.js'))
-    .pipe(gulp.dest('./dist/js'));
+require('./src/compiler.js');
+require('babel/register');
+
+gulp.task('mocha', function() {
+  env({
+    vars: {
+      NODE_ENV: 'production'
+    }
+  });
+
+  return gulp
+    .src('./src/components/**/*.spec.js', { read: false })
+    .pipe(mocha());
 });
 
-gulp.task('uglify', ['browserify'], function () {
-  gulp.src('./dist/js/main.js')
-    .pipe(uglify())
-    .pipe(rename('main.min.js'))
-    .pipe(gulp.dest('./dist/js'));
+// Rerun the task when a file changes
+gulp.task('watch', function() {
+  gulp.watch('./src/components/**/*.js', ['mocha']);
 });
 
-gulp.task('copy',function() {
-    gulp.src('bower_components/fontawesome/fonts/*')
-      .pipe(gulp.dest('dist/fonts'));
-    gulp.src('src/index.html')
-      .pipe(gulp.dest('dist'));
-    gulp.src('src/assets/**/*.*')
-      .pipe(gulp.dest('dist/assets'));
-});
-
-gulp.task('sass', function () {
-  gulp.src('src/styles/style.scss')
-    .pipe(sass({
-      errLogToConsole: true
-    }))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
-    .pipe(csso())
-    .pipe(gulp.dest('dist/styles'));
-});
-
-gulp.task('default',['uglify', 'copy', 'sass'], function() {
-    return gulp.watch(['src/**/*.*', 'gulpfile.js'], ['uglify', 'copy', 'sass'])
-});
+gulp.task('default', [
+  'mocha',
+  'watch'
+]);
