@@ -74,6 +74,7 @@
     "webpack-livereload-plugin": "^0.4.0"
   },
   "dependencies": {
+    "alt": "^0.17.8",
     "formsy-react": "^0.17.0",
     "formsy-react-components": "^0.6.1",
     "react": "^0.14.0",
