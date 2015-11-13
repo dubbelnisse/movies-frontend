@@ -6,7 +6,6 @@ class GetLatestMoviesActions {
     HttpClient
       .get('http://localhost:3000/latest')
       .then(data => {
-        console.log(data);
         this.dispatch(data);
       });
   }

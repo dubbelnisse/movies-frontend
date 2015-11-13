@@ -11,7 +11,6 @@ const propTypes = {
 @connectToStores
 export default class LatestMovies extends Component {
   componentDidMount() {
-    console.log('load movies');
     GetLatestMoviesActions.get();
   }
 
@@ -26,7 +25,6 @@ export default class LatestMovies extends Component {
   render () {
     return (
       <div className="latest-movies">
-        Latest movies
         <ul>
         {
           this.props.latestMovies.map( (movie, i) => {
